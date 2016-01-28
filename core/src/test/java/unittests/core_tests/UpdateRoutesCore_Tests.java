@@ -9,11 +9,11 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-import org.tjazi.infra.messagesrouterupdater.core.core.ListOfClustersProvider;
-import org.tjazi.infra.messagesrouterupdater.core.core.UpdateRoutesBroadcaster;
-import org.tjazi.infra.messagesrouterupdater.core.core.UpdateRoutesCoreImpl;
-import org.tjazi.infra.messagesrouterupdater.core.dao.RoutingTableDAO;
-import org.tjazi.infra.messagesrouterupdater.core.dao.model.RoutingTableDAOModel;
+import com.tjazi.infra.messagesrouterupdater.core.core.ListOfClustersProvider;
+import com.tjazi.infra.messagesrouterupdater.core.core.UpdateRoutesBroadcaster;
+import com.tjazi.infra.messagesrouterupdater.core.core.UpdateRoutesCoreImpl;
+import com.tjazi.infra.messagesrouterupdater.core.dao.RoutingTableDAO;
+import com.tjazi.infra.messagesrouterupdater.core.dao.model.RoutingTableDAOModel;
 import org.tjazi.infra.messagesrouterupdater.messages.UpdateRouteMessage;
 import org.tjazi.infra.messagesrouterupdater.messages.UpdateRouteMessageAction;
 

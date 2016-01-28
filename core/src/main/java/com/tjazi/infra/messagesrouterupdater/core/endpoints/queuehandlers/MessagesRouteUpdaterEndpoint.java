@@ -1,4 +1,4 @@
-package org.tjazi.infra.messagesrouterupdater.core.endpoints.queuehandlers;
+package com.tjazi.infra.messagesrouterupdater.core.endpoints.queuehandlers;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

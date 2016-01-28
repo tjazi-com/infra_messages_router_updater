@@ -1,5 +1,6 @@
-package org.tjazi.infra.messagesrouterupdater.core.config;
+package com.tjazi.infra.messagesrouterupdater.core.config;
 
+import com.tjazi.infra.messagesrouterupdater.core.endpoints.queuehandlers.MessagesRouteUpdaterEndpoint;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.Queue;
@@ -12,7 +13,6 @@ import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.tjazi.infra.messagesrouterupdater.core.endpoints.queuehandlers.MessagesRouteUpdaterEndpoint;
 
 /**
  * Created by Krzysztof Wasiak on 22/01/2016.

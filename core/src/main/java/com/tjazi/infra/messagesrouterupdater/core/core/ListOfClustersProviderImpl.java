@@ -1,4 +1,4 @@
-package org.tjazi.infra.messagesrouterupdater.core.core;
+package com.tjazi.infra.messagesrouterupdater.core.core;
 
 import org.springframework.stereotype.Service;
 

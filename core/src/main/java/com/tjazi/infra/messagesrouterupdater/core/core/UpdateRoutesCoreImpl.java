@@ -1,11 +1,11 @@
-package org.tjazi.infra.messagesrouterupdater.core.core;
+package com.tjazi.infra.messagesrouterupdater.core.core;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.tjazi.infra.messagesrouterupdater.core.dao.RoutingTableDAO;
-import org.tjazi.infra.messagesrouterupdater.core.dao.model.RoutingTableDAOModel;
+import com.tjazi.infra.messagesrouterupdater.core.dao.RoutingTableDAO;
+import com.tjazi.infra.messagesrouterupdater.core.dao.model.RoutingTableDAOModel;
 import org.tjazi.infra.messagesrouterupdater.messages.UpdateRouteMessage;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package org.tjazi.infra.messagesrouterupdater.core.dao.model;
+package com.tjazi.infra.messagesrouterupdater.core.dao.model;
 
 import javax.persistence.*;
 
