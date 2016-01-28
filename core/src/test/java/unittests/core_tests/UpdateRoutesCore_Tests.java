@@ -45,7 +45,7 @@ public class UpdateRoutesCore_Tests {
     public UpdateRoutesCoreImpl updateRoutesCore;
 
     @Test
-    public void updateRoutes_NullInput_Test() {
+    public void updateRoutes_NullInput_Test() throws Exception {
 
         rule.expect(IllegalArgumentException.class);
 
@@ -53,7 +53,7 @@ public class UpdateRoutesCore_Tests {
     }
 
     @Test
-    public void updateRoutes_UpdateExistingRecord_BroadcastToOtherClusters_test() {
+    public void updateRoutes_UpdateExistingRecord_BroadcastToOtherClusters_test() throws Exception {
 
         String existingClusterName = "cluster1" + UUID.randomUUID().toString();
         String newClusterName = "cluster2" + UUID.randomUUID().toString();
@@ -119,7 +119,7 @@ public class UpdateRoutesCore_Tests {
     }
 
     @Test
-    public void updateRoutes_CreateNewRoutingRecord_BroadcastToOtherClusters_test() {
+    public void updateRoutes_CreateNewRoutingRecord_BroadcastToOtherClusters_test() throws Exception {
 
         String newClusterName = "cluster1" + UUID.randomUUID().toString();
         String expectedNewRecordClusters = newClusterName;
@@ -173,5 +173,26 @@ public class UpdateRoutesCore_Tests {
         Assert.assertEquals(updateRouteMessageAction, broadcastedMessage.getUpdateRouteMessageAction());
         Assert.assertEquals(newClusterName, broadcastedMessage.getClusterName());
         Assert.assertEquals(false, broadcastedMessage.isAllowForward());
+    }
+
+    @Test
+    public void updateRoutes_UpdateExistingRecord_FailOnDuplicateRoutingRecord_test() throws Exception {
+
+        String receiverId = UUID.randomUUID().toString();
+
+        RoutingTableDAOModel dataModel = new RoutingTableDAOModel();
+
+        // find record to be updated
+        // return 2 copies of the record, which should generate an exception
+        when(routingTableDAO.findByReceiverId(anyString()))
+                .thenReturn(Collections.nCopies(2, dataModel));
+
+
+        // main call
+        UpdateRouteMessage requestMessage = new UpdateRouteMessage();
+        requestMessage.setReceiverId(receiverId);
+
+        rule.expect(Exception.class);
+        updateRoutesCore.updateRoutes(requestMessage);
     }
 }

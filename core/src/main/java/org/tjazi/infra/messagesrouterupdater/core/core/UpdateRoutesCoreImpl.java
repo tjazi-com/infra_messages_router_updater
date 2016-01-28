@@ -29,7 +29,7 @@ public class UpdateRoutesCoreImpl implements UpdateRoutesCore {
     private UpdateRoutesBroadcaster updateRoutesBroadcaster;
 
     @Override
-    public void updateRoutes(UpdateRouteMessage updateRouteMessage) {
+    public void updateRoutes(UpdateRouteMessage updateRouteMessage) throws Exception {
 
         if (updateRouteMessage == null) {
             String errorMessage = "updateRouteMessage is null";
@@ -42,9 +42,16 @@ public class UpdateRoutesCoreImpl implements UpdateRoutesCore {
         broadcastUpdateRouteMessageToOtherClusters(updateRouteMessage);
     }
 
-    private void addNewRouteToExistingRecord(UpdateRouteMessage updateRouteMessage) {
+    private void addNewRouteToExistingRecord(UpdateRouteMessage updateRouteMessage) throws Exception {
 
-        List<RoutingTableDAOModel> routingRecords = routingTableDAO.findByReceiverId(updateRouteMessage.getReceiverId());
+        String receiverId = updateRouteMessage.getReceiverId();
+        List<RoutingTableDAOModel> routingRecords = routingTableDAO.findByReceiverId(receiverId);
+
+        if (routingRecords.size() > 1) {
+            String message = "Got multiple routing records for receiver ID: " + receiverId;
+            log.error(message);
+            throw new Exception(message);
+        }
 
         String newClusterNames = updateRouteMessage.getClusterName();
 
