@@ -61,6 +61,7 @@ public class UpdateRoutesCore_Tests {
         UpdateRouteMessageAction updateRouteMessageAction = UpdateRouteMessageAction.ADDROUTE;
         long recordId = 2427491;
         long recordVersion = 32;
+        long recordNewVersion = 33;
 
         String receiverId = UUID.randomUUID().toString();
 
@@ -68,8 +69,9 @@ public class UpdateRoutesCore_Tests {
         dataModel.setClusterNames(existingClusterName);
         dataModel.setId(recordId);
         dataModel.setReceiverId(receiverId.toString());
-        dataModel.setVersion(32);
+        dataModel.setVersion(recordVersion);
 
+        // find record to be updated
         when(routingTableDAO.findByReceiverId(anyString()))
                 .thenReturn(Collections.singletonList(dataModel));
 
@@ -102,7 +104,64 @@ public class UpdateRoutesCore_Tests {
         Assert.assertEquals(recordId, capturedDaoModel.getId());
         Assert.assertEquals(expectedNewRecordClusters, capturedDaoModel.getClusterNames());
         Assert.assertEquals(receiverId, capturedDaoModel.getReceiverId());
-        Assert.assertEquals(recordVersion + 1, capturedDaoModel.getVersion());
+        Assert.assertEquals(recordNewVersion, capturedDaoModel.getVersion());
+
+        // STEP 3 -broadcast message to other clusters
+        ArgumentCaptor<UpdateRouteMessage> broadcastMessageCaptor = ArgumentCaptor.forClass(UpdateRouteMessage.class);
+        verify(updateRoutesBroadcaster).broadcastUpdateRouteMessage(broadcastMessageCaptor.capture());
+
+        UpdateRouteMessage broadcastedMessage = broadcastMessageCaptor.getValue();
+        Assert.assertNotNull(broadcastedMessage);
+        Assert.assertEquals(receiverId, broadcastedMessage.getReceiverId());
+        Assert.assertEquals(updateRouteMessageAction, broadcastedMessage.getUpdateRouteMessageAction());
+        Assert.assertEquals(newClusterName, broadcastedMessage.getClusterName());
+        Assert.assertEquals(false, broadcastedMessage.isAllowForward());
+    }
+
+    @Test
+    public void updateRoutes_CreateNewRoutingRecord_BroadcastToOtherClusters_test() {
+
+        String newClusterName = "cluster1" + UUID.randomUUID().toString();
+        String expectedNewRecordClusters = newClusterName;
+        UpdateRouteMessageAction updateRouteMessageAction = UpdateRouteMessageAction.ADDROUTE;
+        long recordId = 0;
+        long recordVersion = 1;
+
+        String receiverId = UUID.randomUUID().toString();
+
+        // find record to be updated
+        when(routingTableDAO.findByReceiverId(anyString()))
+                .thenReturn(Collections.emptyList());
+
+        // main call
+        UpdateRouteMessage requestMessage = new UpdateRouteMessage();
+        requestMessage.setReceiverId(receiverId);
+        requestMessage.setAllowForward(true);
+        requestMessage.setClusterName(newClusterName);
+        requestMessage.setUpdateRouteMessageAction(updateRouteMessageAction);
+
+        updateRoutesCore.updateRoutes(requestMessage);
+
+        //**
+        //** verification and assertion
+        //**
+
+        // STEP 1 - get existing record
+        ArgumentCaptor<String> receiverIdCaptor = ArgumentCaptor.forClass(String.class);
+        verify(routingTableDAO).findByReceiverId(receiverIdCaptor.capture());
+
+        Assert.assertEquals(receiverId, receiverIdCaptor.getValue());
+
+        // STEP 2 - DAO CALL - save updated record
+        ArgumentCaptor<RoutingTableDAOModel> daoModelCaptor = ArgumentCaptor.forClass(RoutingTableDAOModel.class);
+        verify(routingTableDAO).save(daoModelCaptor.capture());
+
+        RoutingTableDAOModel capturedDaoModel = daoModelCaptor.getValue();
+        Assert.assertNotNull(capturedDaoModel);
+        Assert.assertEquals(recordId, capturedDaoModel.getId());
+        Assert.assertEquals(expectedNewRecordClusters, capturedDaoModel.getClusterNames());
+        Assert.assertEquals(receiverId, capturedDaoModel.getReceiverId());
+        Assert.assertEquals(recordVersion, capturedDaoModel.getVersion());
 
         // STEP 3 -broadcast message to other clusters
         ArgumentCaptor<UpdateRouteMessage> broadcastMessageCaptor = ArgumentCaptor.forClass(UpdateRouteMessage.class);

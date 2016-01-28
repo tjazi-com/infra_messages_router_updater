@@ -44,17 +44,28 @@ public class UpdateRoutesCoreImpl implements UpdateRoutesCore {
 
     private void addNewRouteToExistingRecord(UpdateRouteMessage updateRouteMessage) {
 
-        List<RoutingTableDAOModel> routingRecord = routingTableDAO.findByReceiverId(updateRouteMessage.getReceiverId());
+        List<RoutingTableDAOModel> routingRecords = routingTableDAO.findByReceiverId(updateRouteMessage.getReceiverId());
 
-        RoutingTableDAOModel extractedRoutingRecord = routingRecord.get(0);
+        String newClusterNames = updateRouteMessage.getClusterName();
 
-        String existingClusterNames = extractedRoutingRecord.getClusterNames();
-        existingClusterNames += ";" + updateRouteMessage.getClusterName();
+        RoutingTableDAOModel routingTableDAOModel;
+        long recordVersion;
 
-        extractedRoutingRecord.setClusterNames(existingClusterNames);
-        extractedRoutingRecord.setVersion(extractedRoutingRecord.getVersion() + 1);
+        if (routingRecords.size() == 1) {
+            routingTableDAOModel = routingRecords.get(0);
 
-        routingTableDAO.save(extractedRoutingRecord);
+            newClusterNames = routingTableDAOModel.getClusterNames() + ";" + newClusterNames;
+            recordVersion = routingTableDAOModel.getVersion() + 1;
+        } else {
+            routingTableDAOModel = new RoutingTableDAOModel();
+            routingTableDAOModel.setReceiverId(updateRouteMessage.getReceiverId());
+            recordVersion = 1;
+        }
+
+        routingTableDAOModel.setClusterNames(newClusterNames);
+        routingTableDAOModel.setVersion(recordVersion);
+
+        routingTableDAO.save(routingTableDAOModel);
     }
 
     private void broadcastUpdateRouteMessageToOtherClusters(UpdateRouteMessage updateRouteMessage) {
