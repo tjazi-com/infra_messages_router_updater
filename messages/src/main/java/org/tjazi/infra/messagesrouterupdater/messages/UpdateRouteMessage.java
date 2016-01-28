@@ -9,13 +9,20 @@ package org.tjazi.infra.messagesrouterupdater.messages;
  * Example: user belonging to particular group (receiver ID: X) logs-in to cluster,
  *          so router gets updated so that all messages for group with receiver ID X will be sent to that cluster
  */
-public class UpdateRoute {
+public class UpdateRouteMessage {
 
     private String receiverId;
 
     private String clusterName;
 
-    private UpdateRouteAction updateRouteAction;
+    private UpdateRouteMessageAction updateRouteMessageAction;
+
+    /**
+     * Allow message to be forwarded to other clusters - if needed.
+     * Keeping this as 'true' will cause this message to be sent indefinetely between clusters,
+     * which can result with spiraling number of messages in the system
+     */
+    private boolean allowForward;
 
     public String getReceiverId() {
         return receiverId;
@@ -33,11 +40,19 @@ public class UpdateRoute {
         this.clusterName = clusterName;
     }
 
-    public UpdateRouteAction getUpdateRouteAction() {
-        return updateRouteAction;
+    public UpdateRouteMessageAction getUpdateRouteMessageAction() {
+        return updateRouteMessageAction;
     }
 
-    public void setUpdateRouteAction(UpdateRouteAction updateRouteAction) {
-        this.updateRouteAction = updateRouteAction;
+    public void setUpdateRouteMessageAction(UpdateRouteMessageAction updateRouteMessageAction) {
+        this.updateRouteMessageAction = updateRouteMessageAction;
+    }
+
+    public boolean isAllowForward() {
+        return allowForward;
+    }
+
+    public void setAllowForward(boolean allowForward) {
+        this.allowForward = allowForward;
     }
 }

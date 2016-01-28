@@ -3,7 +3,7 @@ package org.tjazi.infra.messagesrouterupdater.messages;
 /**
  * Created by Krzysztof Wasiak on 22/01/2016.
  */
-public enum UpdateRouteAction {
+public enum UpdateRouteMessageAction {
 
     /**
      * Add cluster name to the route, so that messages for that receiver were sent via that cluster
