@@ -53,7 +53,7 @@ public class UpdateRoutesCore_Tests {
     }
 
     @Test
-    public void updateRoutes_UpdateExistingRecord_BroadcastToOtherClusters_test() throws Exception {
+    public void updateRoutes_UpdateExistingRecord_BroadcastToOtherClusters_Test() throws Exception {
 
         String existingClusterName = "cluster1" + UUID.randomUUID().toString();
         String newClusterName = "cluster2" + UUID.randomUUID().toString();
@@ -75,6 +75,8 @@ public class UpdateRoutesCore_Tests {
         when(routingTableDAO.findByReceiverId(anyString()))
                 .thenReturn(Collections.singletonList(dataModel));
 
+        when(routingTableDAO.updateClusterNamesOnRoutingRecord(anyLong(), anyString(), anyLong(), anyLong()))
+                .thenReturn(1);
 
         // main call
         UpdateRouteMessage requestMessage = new UpdateRouteMessage();
@@ -96,15 +98,8 @@ public class UpdateRoutesCore_Tests {
         Assert.assertEquals(receiverId, receiverIdCaptor.getValue());
 
         // STEP 2 - save updated record
-        ArgumentCaptor<RoutingTableDAOModel> daoModelCaptor = ArgumentCaptor.forClass(RoutingTableDAOModel.class);
-        verify(routingTableDAO).save(daoModelCaptor.capture());
-
-        RoutingTableDAOModel capturedDaoModel = daoModelCaptor.getValue();
-        Assert.assertNotNull(capturedDaoModel);
-        Assert.assertEquals(recordId, capturedDaoModel.getId());
-        Assert.assertEquals(expectedNewRecordClusters, capturedDaoModel.getClusterNames());
-        Assert.assertEquals(receiverId, capturedDaoModel.getReceiverId());
-        Assert.assertEquals(recordNewVersion, capturedDaoModel.getVersion());
+        verify(routingTableDAO).updateClusterNamesOnRoutingRecord(
+                recordId, expectedNewRecordClusters, recordVersion, recordNewVersion);
 
         // STEP 3 -broadcast message to other clusters
         ArgumentCaptor<UpdateRouteMessage> broadcastMessageCaptor = ArgumentCaptor.forClass(UpdateRouteMessage.class);
@@ -119,7 +114,7 @@ public class UpdateRoutesCore_Tests {
     }
 
     @Test
-    public void updateRoutes_CreateNewRoutingRecord_BroadcastToOtherClusters_test() throws Exception {
+    public void updateRoutes_CreateNewRoutingRecord_BroadcastToOtherClusters_Test() throws Exception {
 
         String newClusterName = "cluster1" + UUID.randomUUID().toString();
         String expectedNewRecordClusters = newClusterName;
@@ -176,7 +171,7 @@ public class UpdateRoutesCore_Tests {
     }
 
     @Test
-    public void updateRoutes_UpdateExistingRecord_FailOnDuplicateRoutingRecord_test() throws Exception {
+    public void updateRoutes_UpdateExistingRecord_FailOnDuplicateRoutingRecord_Test() throws Exception {
 
         String receiverId = UUID.randomUUID().toString();
 

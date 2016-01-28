@@ -23,10 +23,10 @@ public interface RoutingTableDAO extends CrudRepository<RoutingTableDAOModel, Lo
     @Modifying
     @Transactional
     @Query("UPDATE RoutingTableDAOModel rtdm " +
-            "SET rtdm.clusterNames=:clusterNames, " +
-            "rtdm.version=:currentVersion " +
-            "WHERE rtdm.id=:recordId AND " +
-            "rtdm.version=:previousVersion")
+            "SET   rtdm.clusterNames=:clusterNames, " +
+            "      rtdm.version=:currentVersion " +
+            "WHERE rtdm.id=:recordId " +
+            "AND   rtdm.version=:previousVersion")
     int updateClusterNamesOnRoutingRecord(
             @Param("recordId") Long recordId,
             @Param("clusterNames") String clusterNames,

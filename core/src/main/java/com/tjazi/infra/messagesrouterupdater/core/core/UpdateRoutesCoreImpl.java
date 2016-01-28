@@ -54,25 +54,28 @@ public class UpdateRoutesCoreImpl implements UpdateRoutesCore {
         }
 
         String newClusterNames = updateRouteMessage.getClusterName();
-
         RoutingTableDAOModel routingTableDAOModel;
-        long recordVersion;
 
         if (routingRecords.size() == 1) {
             routingTableDAOModel = routingRecords.get(0);
 
+            long previousVersion = routingTableDAOModel.getVersion();
+            long currentVersion = previousVersion + 1;
+
             newClusterNames = routingTableDAOModel.getClusterNames() + ";" + newClusterNames;
-            recordVersion = routingTableDAOModel.getVersion() + 1;
+
+            routingTableDAO.updateClusterNamesOnRoutingRecord(
+                    routingTableDAOModel.getId(),
+                    newClusterNames, previousVersion, currentVersion);
+
         } else {
             routingTableDAOModel = new RoutingTableDAOModel();
             routingTableDAOModel.setReceiverId(updateRouteMessage.getReceiverId());
-            recordVersion = 1;
+            routingTableDAOModel.setClusterNames(newClusterNames);
+            routingTableDAOModel.setVersion(1);
+
+            routingTableDAO.save(routingTableDAOModel);
         }
-
-        routingTableDAOModel.setClusterNames(newClusterNames);
-        routingTableDAOModel.setVersion(recordVersion);
-
-        routingTableDAO.save(routingTableDAOModel);
     }
 
     private void broadcastUpdateRouteMessageToOtherClusters(UpdateRouteMessage updateRouteMessage) {
