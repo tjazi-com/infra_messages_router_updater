@@ -8,6 +8,7 @@ import com.tjazi.infra.messagesrouterupdater.core.dao.model.RoutingTableDAOModel
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -22,9 +23,13 @@ public interface RoutingTableDAO extends CrudRepository<RoutingTableDAOModel, Lo
     @Modifying
     @Transactional
     @Query("UPDATE RoutingTableDAOModel rtdm " +
-            "SET rtdm.clusterNames=?2, " +
-            "rtdm.version=?4 " +
-            "WHERE rtdm.id=?1 AND " +
-            "rtdm.version=?3")
-    int updateClusterNamesOnRoutingRecord(Long recordId, String clusterNames, long previousVersion, long currentVersion);
+            "SET rtdm.clusterNames=:clusterNames, " +
+            "rtdm.version=:currentVersion " +
+            "WHERE rtdm.id=:recordId AND " +
+            "rtdm.version=:previousVersion")
+    int updateClusterNamesOnRoutingRecord(
+            @Param("recordId") Long recordId,
+            @Param("clusterNames") String clusterNames,
+            @Param("previousVersion") long previousVersion,
+            @Param("currentVersion") long currentVersion);
 }
