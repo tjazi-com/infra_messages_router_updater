@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52826df6-8ee1-4b3e-9451-24d66061fed8" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/tjazi/infra/messagesrouterupdater/core/core/ListOfClustersProvider.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/tjazi/infra/messagesrouterupdater/core/core/ListOfClustersProviderImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/tjazi/infra/messagesrouterupdater/core/core/UpdateRoutesBroadcaster.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/tjazi/infra/messagesrouterupdater/core/core/UpdateRoutesBroadcasterImpl.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/tjazi/infra/messagesrouterupdater/core/core/UpdateRoutesCoreImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/tjazi/infra/messagesrouterupdater/core/core/UpdateRoutesCoreImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/tjazi/infra/messagesrouterupdater/core/dao/RoutingTableDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/tjazi/infra/messagesrouterupdater/core/dao/RoutingTableDAO.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/unittests/core_tests/UpdateRoutesCore_Tests.java" afterPath="$PROJECT_DIR$/src/test/java/unittests/core_tests/UpdateRoutesCore_Tests.java" />
     </list>
     <ignored path="infra_messages_router_updater_core.iws" />
@@ -29,11 +32,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="UpdateRoutesCore_Tests.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="UpdateRoutesCore_Tests.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/unittests/core_tests/UpdateRoutesCore_Tests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.64439654">
-              <caret line="101" column="51" selection-start-line="101" selection-start-column="51" selection-end-line="101" selection-end-column="51" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="209" column="49" selection-start-line="209" selection-start-column="20" selection-end-line="209" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -41,46 +44,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UpdateRoutesCoreImpl.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="UpdateRoutesCoreImpl.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/tjazi/infra/messagesrouterupdater/core/core/UpdateRoutesCoreImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+            <state vertical-scroll-proportion="1.0">
+              <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RoutingTableDAO_Tests.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/integrationtests/RoutingTableDAO_Tests.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="84" column="45" selection-start-line="84" selection-start-column="45" selection-end-line="84" selection-end-column="45" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RoutingTableDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/tjazi/infra/messagesrouterupdater/core/dao/RoutingTableDAO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RoutingTableDAOModel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/tjazi/infra/messagesrouterupdater/core/dao/model/RoutingTableDAOModel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="13" column="33" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="33" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -128,8 +99,8 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/test/java/integrationtests/RoutingTableDAO_Tests.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tjazi/infra/messagesrouterupdater/core/dao/RoutingTableDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tjazi/infra/messagesrouterupdater/core/core/UpdateRoutesCoreImpl.java" />
         <option value="$PROJECT_DIR$/src/test/java/unittests/core_tests/UpdateRoutesCore_Tests.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tjazi/infra/messagesrouterupdater/core/core/UpdateRoutesCoreImpl.java" />
       </list>
     </option>
   </component>
@@ -338,70 +309,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="infra_messages_router_updater_core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="infra_messages_router_updater_core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="core" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -430,32 +337,6 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.Run all unit testcases">
-    <configuration default="false" name="UpdateRoutesCore_Tests.updateRoutes_CreateNewRoutingRecord_BroadcastToOtherClusters_test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="unittests.core_tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="core" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="unittests.core_tests" />
-      <option name="MAIN_CLASS_NAME" value="unittests.core_tests.UpdateRoutesCore_Tests" />
-      <option name="METHOD_NAME" value="updateRoutes_CreateNewRoutingRecord_BroadcastToOtherClusters_test" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
     <configuration default="false" name="UpdateRoutesCore_Tests.updateRoutes_UpdateExistingRecord_FailOnDuplicateRoutingRecord_test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -551,6 +432,32 @@
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="UpdateRoutesCore_Tests.updateRoutes_UpdateRecordOverwrittenInTheMiddleOfTheSession_FailOn3rdAttempt_Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="unittests.core_tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="core" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="unittests.core_tests" />
+      <option name="MAIN_CLASS_NAME" value="unittests.core_tests.UpdateRoutesCore_Tests" />
+      <option name="METHOD_NAME" value="updateRoutes_UpdateRecordOverwrittenInTheMiddleOfTheSession_FailOn3rdAttempt_Test" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
@@ -1235,20 +1142,20 @@
     <list size="8">
       <item index="0" class="java.lang.String" itemvalue="JUnit.Run all unit testcases" />
       <item index="1" class="java.lang.String" itemvalue="JUnit.Run all integration testcases" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.UpdateRoutesCore_Tests.updateRoutes_CreateNewRoutingRecord_BroadcastToOtherClusters_test" />
+      <item index="2" class="java.lang.String" itemvalue="Spring Boot.Application" />
       <item index="3" class="java.lang.String" itemvalue="JUnit.UpdateRoutesCore_Tests.updateRoutes_UpdateExistingRecord_FailOnDuplicateRoutingRecord_test" />
       <item index="4" class="java.lang.String" itemvalue="JUnit.RoutingTableDAO_Tests.saveRecordVerifySaved_Test" />
       <item index="5" class="java.lang.String" itemvalue="JUnit.RoutingTableDAO_Tests.updateClustersRecord_Successful_Test" />
       <item index="6" class="java.lang.String" itemvalue="JUnit.RoutingTableDAO_Tests.updateClustersRecord_Failed_ChangedVersion_Test" />
-      <item index="7" class="java.lang.String" itemvalue="Spring Boot.Application" />
+      <item index="7" class="java.lang.String" itemvalue="JUnit.UpdateRoutesCore_Tests.updateRoutes_UpdateRecordOverwrittenInTheMiddleOfTheSession_FailOn3rdAttempt_Test" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.RoutingTableDAO_Tests.updateClustersRecord_Failed_ChangedVersion_Test" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.RoutingTableDAO_Tests.updateClustersRecord_Successful_Test" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.RoutingTableDAO_Tests.saveRecordVerifySaved_Test" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.UpdateRoutesCore_Tests.updateRoutes_UpdateExistingRecord_FailOnDuplicateRoutingRecord_test" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.UpdateRoutesCore_Tests.updateRoutes_CreateNewRoutingRecord_BroadcastToOtherClusters_test" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.UpdateRoutesCore_Tests.updateRoutes_UpdateRecordOverwrittenInTheMiddleOfTheSession_FailOn3rdAttempt_Test" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.RoutingTableDAO_Tests.updateClustersRecord_Failed_ChangedVersion_Test" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.RoutingTableDAO_Tests.updateClustersRecord_Successful_Test" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.RoutingTableDAO_Tests.saveRecordVerifySaved_Test" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.UpdateRoutesCore_Tests.updateRoutes_UpdateExistingRecord_FailOnDuplicateRoutingRecord_test" />
       </list>
     </recent_temporary>
   </component>
@@ -1267,32 +1174,12 @@
       <workItem from="1453653384132" duration="58000" />
       <workItem from="1453722574921" duration="3902000" />
       <workItem from="1453805965551" duration="6746000" />
-      <workItem from="1453970980501" duration="12681000" />
+      <workItem from="1453970980501" duration="12742000" />
+      <workItem from="1454534360042" duration="3270000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="RoutingTableDAO_Tests_updateClustersRecord_Failed_ChangedVersion_Test - 2016.01.28 at 13h 47m 46s.xml">
-      <configuration name="RoutingTableDAO_Tests.updateClustersRecord_Failed_ChangedVersion_Test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="RoutingTableDAO_Tests_updateClustersRecord_Successful_Test - 2016.01.28 at 13h 33m 12s.xml">
-      <configuration name="RoutingTableDAO_Tests.updateClustersRecord_Successful_Test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="RoutingTableDAO_Tests_updateClustersRecord_Successful_Test - 2016.01.28 at 13h 34m 48s.xml">
-      <configuration name="RoutingTableDAO_Tests.updateClustersRecord_Successful_Test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="RoutingTableDAO_Tests_updateClustersRecord_Successful_Test - 2016.01.28 at 13h 35m 09s.xml">
-      <configuration name="RoutingTableDAO_Tests.updateClustersRecord_Successful_Test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Run_all_integration_testcases - 2016.01.28 at 14h 04m 01s.xml">
-      <configuration name="Run all integration testcases" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Run_all_integration_testcases - 2016.01.28 at 16h 02m 50s.xml">
-      <configuration name="Run all integration testcases" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Run_all_unit_testcases - 2016.01.28 at 16h 03m 22s.xml">
-      <configuration name="Run all unit testcases" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="Run_all_unit_testcases - 2016.01.28 at 16h 08m 46s.xml">
       <configuration name="Run all unit testcases" configurationId="JUnit" />
     </history-entry>
@@ -1302,13 +1189,34 @@
     <history-entry file="Run_all_unit_testcases - 2016.01.28 at 16h 11m 37s.xml">
       <configuration name="Run all unit testcases" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="Run_all_unit_testcases - 2016.02.03 at 21h 22m 33s.xml">
+      <configuration name="Run all unit testcases" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Run_all_unit_testcases - 2016.02.04 at 05h 53m 21s.xml">
+      <configuration name="Run all unit testcases" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Run_all_unit_testcases - 2016.02.04 at 06h 00m 34s.xml">
+      <configuration name="Run all unit testcases" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Run_all_unit_testcases - 2016.02.04 at 09h 18m 57s.xml">
+      <configuration name="Run all unit testcases" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UpdateRoutesCore_Tests_updateRoutes_UpdateRecordOverwrittenInTheMiddleOfTheSession_FailOn3rdAttempt_Test - 2016.02.04 at 09h 02m 27s.xml">
+      <configuration name="UpdateRoutesCore_Tests.updateRoutes_UpdateRecordOverwrittenInTheMiddleOfTheSession_FailOn3rdAttempt_Test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UpdateRoutesCore_Tests_updateRoutes_UpdateRecordOverwrittenInTheMiddleOfTheSession_FailOn3rdAttempt_Test - 2016.02.04 at 09h 03m 46s.xml">
+      <configuration name="UpdateRoutesCore_Tests.updateRoutes_UpdateRecordOverwrittenInTheMiddleOfTheSession_FailOn3rdAttempt_Test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UpdateRoutesCore_Tests_updateRoutes_UpdateRecordOverwrittenInTheMiddleOfTheSession_FailOn3rdAttempt_Test - 2016.02.04 at 09h 08m 06s.xml">
+      <configuration name="UpdateRoutesCore_Tests.updateRoutes_UpdateRecordOverwrittenInTheMiddleOfTheSession_FailOn3rdAttempt_Test" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26285000" />
+    <option name="totallyTimeSpent" value="29616000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="825" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1318,15 +1226,15 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4106412" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3287858" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4106412" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32789117" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31545064" sideWeight="0.82520324" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31545064" sideWeight="0.8101852" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31545064" sideWeight="0.17479675" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31545064" sideWeight="0.18981482" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39972714" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1352,7 +1260,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/unittests/core_tests/UpdateRoutesCore_Tests.java</url>
-          <line>87</line>
+          <line>80</line>
           <properties />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
@@ -1366,6 +1274,50 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/test/java/unittests/core_tests/UpdateRoutesCore_Tests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tjazi/infra/messagesrouterupdater/core/core/UpdateRoutesCoreImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/integrationtests/RoutingTableDAO_Tests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="84" column="45" selection-start-line="84" selection-start-column="45" selection-end-line="84" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tjazi/infra/messagesrouterupdater/core/dao/RoutingTableDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tjazi/infra/messagesrouterupdater/core/dao/model/RoutingTableDAOModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="33" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/unittests/core_tests/UpdateRoutesCore_Tests.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1390,7 +1342,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1424,10 +1375,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
-          <folding>
-            <element signature="e#323#324#0" expanded="false" />
-            <element signature="e#385#386#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1449,19 +1397,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tjazi/infra/messagesrouterupdater/core/core/UpdateRoutesBroadcaster.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/tjazi/infra/messagesrouterupdater/core/core/UpdateRoutesCore.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1479,17 +1418,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tjazi/infra/messagesrouterupdater/core/core/UpdateRoutesBroadcasterImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="40" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1505,10 +1433,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
-          <folding>
-            <element signature="e#323#324#0" expanded="false" />
-            <element signature="e#385#386#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1530,19 +1455,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tjazi/infra/messagesrouterupdater/core/core/UpdateRoutesBroadcaster.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/tjazi/infra/messagesrouterupdater/core/core/UpdateRoutesCore.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1568,10 +1484,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
-          <folding>
-            <element signature="e#323#324#0" expanded="false" />
-            <element signature="e#385#386#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1593,19 +1506,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tjazi/infra/messagesrouterupdater/core/core/UpdateRoutesBroadcaster.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/tjazi/infra/messagesrouterupdater/core/core/UpdateRoutesCore.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1637,24 +1541,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tjazi/infra/messagesrouterupdater/core/core/UpdateRoutesBroadcasterImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="46" selection-start-line="3" selection-start-column="46" selection-end-line="3" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tjazi/infra/messagesrouterupdater/core/core/ListOfClustersProviderImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="64" selection-start-line="15" selection-start-column="64" selection-end-line="15" selection-end-column="64" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/src.zip!/java/util/Collections.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33189654">
@@ -1670,9 +1556,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1684,27 +1567,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tjazi/infra/messagesrouterupdater/core/core/ListOfClustersProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="104" selection-start-line="11" selection-start-column="104" selection-end-line="11" selection-end-column="104" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/tjazi/infra/messagesrouterupdater/core/core/UpdateRoutesCore.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="8" column="61" selection-start-line="8" selection-start-column="61" selection-end-line="8" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tjazi/infra/messagesrouterupdater/core/core/UpdateRoutesBroadcaster.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1720,9 +1586,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="15" column="86" selection-start-line="15" selection-start-column="86" selection-end-line="15" selection-end-column="86" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1730,7 +1593,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.06465517">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1738,7 +1600,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1754,7 +1615,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3089245">
           <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1762,9 +1622,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="84" column="45" selection-start-line="84" selection-start-column="45" selection-end-line="84" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1784,20 +1642,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tjazi/infra/messagesrouterupdater/core/core/UpdateRoutesCoreImpl.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/1.11.2.RELEASE/spring-data-commons-1.11.2.RELEASE.jar!/org/springframework/data/repository/CrudRepository.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17699115">
+          <caret line="13" column="20" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/unittests/core_tests/UpdateRoutesCore_Tests.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <caret line="209" column="49" selection-start-line="209" selection-start-column="20" selection-end-line="209" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/unittests/core_tests/UpdateRoutesCore_Tests.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tjazi/infra/messagesrouterupdater/core/core/UpdateRoutesCoreImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.64439654">
-          <caret line="101" column="51" selection-start-line="101" selection-start-column="51" selection-end-line="101" selection-end-column="51" />
+        <state vertical-scroll-proportion="1.0">
+          <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

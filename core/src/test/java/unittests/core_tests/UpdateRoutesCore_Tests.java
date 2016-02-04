@@ -9,14 +9,13 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-import com.tjazi.infra.messagesrouterupdater.core.core.ListOfClustersProvider;
-import com.tjazi.infra.messagesrouterupdater.core.core.UpdateRoutesBroadcaster;
 import com.tjazi.infra.messagesrouterupdater.core.core.UpdateRoutesCoreImpl;
 import com.tjazi.infra.messagesrouterupdater.core.dao.RoutingTableDAO;
 import com.tjazi.infra.messagesrouterupdater.core.dao.model.RoutingTableDAOModel;
 import org.tjazi.infra.messagesrouterupdater.messages.UpdateRouteMessage;
 import org.tjazi.infra.messagesrouterupdater.messages.UpdateRouteMessageAction;
 
+import javax.management.OperationsException;
 import java.util.Collections;
 import java.util.UUID;
 
@@ -35,12 +34,6 @@ public class UpdateRoutesCore_Tests {
     @Mock
     public RoutingTableDAO routingTableDAO;
 
-    @Mock
-    public UpdateRoutesBroadcaster updateRoutesBroadcaster;
-
-    @Mock
-    public ListOfClustersProvider listOfClustersProvider;
-
     @InjectMocks
     public UpdateRoutesCoreImpl updateRoutesCore;
 
@@ -53,7 +46,7 @@ public class UpdateRoutesCore_Tests {
     }
 
     @Test
-    public void updateRoutes_UpdateExistingRecord_BroadcastToOtherClusters_Test() throws Exception {
+    public void updateRoutes_UpdateExistingRecord_Test() throws Exception {
 
         String existingClusterName = "cluster1" + UUID.randomUUID().toString();
         String newClusterName = "cluster2" + UUID.randomUUID().toString();
@@ -100,21 +93,134 @@ public class UpdateRoutesCore_Tests {
         // STEP 2 - save updated record
         verify(routingTableDAO).updateClusterNamesOnRoutingRecord(
                 recordId, expectedNewRecordClusters, recordVersion, recordNewVersion);
+    }
 
-        // STEP 3 -broadcast message to other clusters
-        ArgumentCaptor<UpdateRouteMessage> broadcastMessageCaptor = ArgumentCaptor.forClass(UpdateRouteMessage.class);
-        verify(updateRoutesBroadcaster).broadcastUpdateRouteMessage(broadcastMessageCaptor.capture());
+    /**
+     * Check behaviour when:
+     * 1. We've got routing record for the given receiver
+     * 2. We change it and attempt to save.
+     * 3. In the meantime record has been already updated by another instance of the updater
+     * 4. We should re-read record and attempt to save it again
+     */
+    @Test
+    public void updateRoutes_UpdateRecordOverwrittenInTheMiddleOfTheSession_Test() throws Exception {
+        String existingClusterName = "cluster1" + UUID.randomUUID().toString();
+        String newClusterName = "cluster2" + UUID.randomUUID().toString();
+        String expectedNewRecordClusters = existingClusterName + ";" + newClusterName;
+        UpdateRouteMessageAction updateRouteMessageAction = UpdateRouteMessageAction.ADDROUTE;
+        long recordId = 2427491;
+        long recordVersion = 32;
+        long recordConflictingVersion = 33;
+        long recordNewVersion = 34;
 
-        UpdateRouteMessage broadcastedMessage = broadcastMessageCaptor.getValue();
-        Assert.assertNotNull(broadcastedMessage);
-        Assert.assertEquals(receiverId, broadcastedMessage.getReceiverId());
-        Assert.assertEquals(updateRouteMessageAction, broadcastedMessage.getUpdateRouteMessageAction());
-        Assert.assertEquals(newClusterName, broadcastedMessage.getClusterName());
-        Assert.assertEquals(false, broadcastedMessage.isAllowForward());
+        String receiverId = UUID.randomUUID().toString();
+
+        RoutingTableDAOModel dataModelVersion1 = new RoutingTableDAOModel();
+        dataModelVersion1.setClusterNames(existingClusterName);
+        dataModelVersion1.setId(recordId);
+        dataModelVersion1.setReceiverId(receiverId.toString());
+        dataModelVersion1.setVersion(recordVersion);
+
+        RoutingTableDAOModel dataModelVersion2 = new RoutingTableDAOModel();
+        dataModelVersion2.setClusterNames(existingClusterName);
+        dataModelVersion2.setId(recordId);
+        dataModelVersion2.setReceiverId(receiverId.toString());
+        dataModelVersion2.setVersion(recordConflictingVersion);
+
+
+        // find record to be updated
+        when(routingTableDAO.findByReceiverId(anyString()))
+                .thenReturn(Collections.singletonList(dataModelVersion1));
+
+
+        when(routingTableDAO.updateClusterNamesOnRoutingRecord(anyLong(), anyString(), anyLong(), anyLong()))
+                .thenReturn(0)
+                .thenReturn(1);
+
+        // main call
+        UpdateRouteMessage requestMessage = new UpdateRouteMessage();
+        requestMessage.setReceiverId(receiverId);
+        requestMessage.setAllowForward(true);
+        requestMessage.setClusterName(newClusterName);
+        requestMessage.setUpdateRouteMessageAction(updateRouteMessageAction);
+
+        updateRoutesCore.updateRoutes(requestMessage);
+
+        //**
+        //** verification and assertion
+        //**
+
+        // STEP 1 - get existing record
+        ArgumentCaptor<String> receiverIdCaptor = ArgumentCaptor.forClass(String.class);
+        verify(routingTableDAO).findByReceiverId(receiverIdCaptor.capture());
+
+        Assert.assertEquals(receiverId, receiverIdCaptor.getValue());
+
+        // STEP 2 - save updated record (2 attempts: 1 for conflicting version, which must be unsuccessful, second: working
+        verify(routingTableDAO).updateClusterNamesOnRoutingRecord(
+                recordId, expectedNewRecordClusters, recordVersion, recordConflictingVersion);
+
+        verify(routingTableDAO).updateClusterNamesOnRoutingRecord(
+                recordId, expectedNewRecordClusters, recordConflictingVersion, recordNewVersion);
+    }
+
+    /**
+     * Check behaviour when:
+     * 1. We've got routing record for the given receiver
+     * 2. We change it and attempt to save.
+     * 3. In the meantime record has been already updated by another instance of the updater
+     * 4. We should re-read record and attempt to save it again. If 3rd attempt fails, we throw an exception
+     */
+    @Test(timeout = 500) // timeout, because there may be endless loop in the code
+    public void updateRoutes_UpdateRecordOverwrittenInTheMiddleOfTheSession_FailOn3rdAttempt_Test() throws Exception {
+        String existingClusterName = "cluster1" + UUID.randomUUID().toString();
+        String newClusterName = "cluster2" + UUID.randomUUID().toString();
+        String expectedNewRecordClusters = existingClusterName + ";" + newClusterName;
+        UpdateRouteMessageAction updateRouteMessageAction = UpdateRouteMessageAction.ADDROUTE;
+        long recordId = 2427491;
+        long recordVersion = 32;
+        long recordConflictingVersion = 33;
+        long recordNewVersion = 34;
+
+        String receiverId = UUID.randomUUID().toString();
+
+        RoutingTableDAOModel dataModelVersion1 = new RoutingTableDAOModel();
+        dataModelVersion1.setClusterNames(existingClusterName);
+        dataModelVersion1.setId(recordId);
+        dataModelVersion1.setReceiverId(receiverId.toString());
+        dataModelVersion1.setVersion(recordVersion);
+
+        RoutingTableDAOModel dataModelVersion2 = new RoutingTableDAOModel();
+        dataModelVersion2.setClusterNames(existingClusterName);
+        dataModelVersion2.setId(recordId);
+        dataModelVersion2.setReceiverId(receiverId.toString());
+        dataModelVersion2.setVersion(recordConflictingVersion);
+
+
+        // find record to be updated
+        when(routingTableDAO.findByReceiverId(anyString()))
+                .thenReturn(Collections.singletonList(dataModelVersion1));
+
+        when(routingTableDAO.updateClusterNamesOnRoutingRecord(anyLong(), anyString(), anyLong(), anyLong()))
+                .thenReturn(0)
+                .thenReturn(0)
+                .thenReturn(0);
+
+        // expect exception after 3rd failed attempt
+        rule.expect(UnsupportedOperationException.class);
+
+        // main call
+        UpdateRouteMessage requestMessage = new UpdateRouteMessage();
+        requestMessage.setReceiverId(receiverId);
+        requestMessage.setAllowForward(true);
+        requestMessage.setClusterName(newClusterName);
+        requestMessage.setUpdateRouteMessageAction(updateRouteMessageAction);
+
+        updateRoutesCore.updateRoutes(requestMessage);
     }
 
     @Test
-    public void updateRoutes_CreateNewRoutingRecord_BroadcastToOtherClusters_Test() throws Exception {
+    public void updateRoutes_CreateNewRoutingRecord_Test() throws Exception {
 
         String newClusterName = "cluster1" + UUID.randomUUID().toString();
         String expectedNewRecordClusters = newClusterName;
@@ -157,19 +263,12 @@ public class UpdateRoutesCore_Tests {
         Assert.assertEquals(expectedNewRecordClusters, capturedDaoModel.getClusterNames());
         Assert.assertEquals(receiverId, capturedDaoModel.getReceiverId());
         Assert.assertEquals(recordVersion, capturedDaoModel.getVersion());
-
-        // STEP 3 -broadcast message to other clusters
-        ArgumentCaptor<UpdateRouteMessage> broadcastMessageCaptor = ArgumentCaptor.forClass(UpdateRouteMessage.class);
-        verify(updateRoutesBroadcaster).broadcastUpdateRouteMessage(broadcastMessageCaptor.capture());
-
-        UpdateRouteMessage broadcastedMessage = broadcastMessageCaptor.getValue();
-        Assert.assertNotNull(broadcastedMessage);
-        Assert.assertEquals(receiverId, broadcastedMessage.getReceiverId());
-        Assert.assertEquals(updateRouteMessageAction, broadcastedMessage.getUpdateRouteMessageAction());
-        Assert.assertEquals(newClusterName, broadcastedMessage.getClusterName());
-        Assert.assertEquals(false, broadcastedMessage.isAllowForward());
     }
 
+    /**
+     * Test case, when there's more than one routing record saved in the database
+     * @throws Exception
+     */
     @Test
     public void updateRoutes_UpdateExistingRecord_FailOnDuplicateRoutingRecord_Test() throws Exception {
 
@@ -181,7 +280,6 @@ public class UpdateRoutesCore_Tests {
         // return 2 copies of the record, which should generate an exception
         when(routingTableDAO.findByReceiverId(anyString()))
                 .thenReturn(Collections.nCopies(2, dataModel));
-
 
         // main call
         UpdateRouteMessage requestMessage = new UpdateRouteMessage();

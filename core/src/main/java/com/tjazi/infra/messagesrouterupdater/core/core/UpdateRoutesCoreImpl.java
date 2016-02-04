@@ -22,12 +22,6 @@ public class UpdateRoutesCoreImpl implements UpdateRoutesCore {
     @Autowired
     private RoutingTableDAO routingTableDAO;
 
-    @Autowired
-    private ListOfClustersProvider listOfClustersProvider;
-
-    @Autowired
-    private UpdateRoutesBroadcaster updateRoutesBroadcaster;
-
     @Override
     public void updateRoutes(UpdateRouteMessage updateRouteMessage) throws Exception {
 
@@ -38,8 +32,6 @@ public class UpdateRoutesCoreImpl implements UpdateRoutesCore {
         }
 
         addNewRouteToExistingRecord(updateRouteMessage);
-
-        broadcastUpdateRouteMessageToOtherClusters(updateRouteMessage);
     }
 
     private void addNewRouteToExistingRecord(UpdateRouteMessage updateRouteMessage) throws Exception {
@@ -59,14 +51,30 @@ public class UpdateRoutesCoreImpl implements UpdateRoutesCore {
         if (routingRecords.size() == 1) {
             routingTableDAOModel = routingRecords.get(0);
 
-            long previousVersion = routingTableDAOModel.getVersion();
-            long currentVersion = previousVersion + 1;
-
             newClusterNames = routingTableDAOModel.getClusterNames() + ";" + newClusterNames;
 
-            routingTableDAO.updateClusterNamesOnRoutingRecord(
-                    routingTableDAOModel.getId(),
-                    newClusterNames, previousVersion, currentVersion);
+            long previousVersion = routingTableDAOModel.getVersion();
+            long currentVersion = previousVersion;
+
+            boolean keepSaving = true;
+            int savesAttemptsCounter = 0;
+
+            while (keepSaving) {
+                savesAttemptsCounter++;
+
+                if (savesAttemptsCounter > 3) {
+                    throw new UnsupportedOperationException(
+                            "There were 3 attempts to update routing record, all failed. Receiver ID: " + receiverId);
+                }
+
+                previousVersion = currentVersion;
+                currentVersion += 1;
+                int numberOfRecordsUpdated = routingTableDAO.updateClusterNamesOnRoutingRecord(
+                        routingTableDAOModel.getId(),
+                        newClusterNames, previousVersion, currentVersion);
+
+                keepSaving = numberOfRecordsUpdated == 0;
+            }
 
         } else {
             routingTableDAOModel = new RoutingTableDAOModel();
@@ -74,14 +82,9 @@ public class UpdateRoutesCoreImpl implements UpdateRoutesCore {
             routingTableDAOModel.setClusterNames(newClusterNames);
             routingTableDAOModel.setVersion(1);
 
+            // this operation should not generate conflict, although who knows...
+            /* TODO: cover scenario with test case, when there's already record saved with the same receiver ID */
             routingTableDAO.save(routingTableDAOModel);
         }
-    }
-
-    private void broadcastUpdateRouteMessageToOtherClusters(UpdateRouteMessage updateRouteMessage) {
-
-        // make sure message is not routed further once it gets to final clusters
-        updateRouteMessage.setAllowForward(false);
-        updateRoutesBroadcaster.broadcastUpdateRouteMessage(updateRouteMessage);
     }
 }
